@@ -10,7 +10,7 @@ public class TelaPrincipal
 
   private readonly IRepositorio<Paciente> repositorioPaciente;
 
-  public TelaPrincipal(IRepositorio<Paciente> repositorioPacienteIRepositorio<Fornecedor> repositorioFornecedor)
+  public TelaPrincipal(IRepositorio<Paciente> repositorioPaciente, IRepositorio<Fornecedor> repositorioFornecedor)
   {
     this.repositorioPaciente = repositorioPaciente;
     this.repositorioFornecedor = repositorioFornecedor;

@@ -21,8 +21,8 @@ IRepositorio<Paciente> repositorioPaciente = new RepositorioPacienteEmArquivo(co
 IRepositorio<Fornecedor> repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
 
 TelaPrincipal telaPrincipal = new TelaPrincipal(
-    repositorioFornecedor,
-    repositorioPaciente
+    repositorioPaciente,
+    repositorioFornecedor    
 );
 
 while (true)
