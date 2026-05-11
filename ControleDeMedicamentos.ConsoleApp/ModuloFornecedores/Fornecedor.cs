@@ -18,15 +18,6 @@ public class Fornecedor : EntidadeBase
         Cnpj = cnpj;
     }
 
-    public override void AtualizarDados(EntidadeBase entidadeAtualizada)
-    {
-        Fornecedor fornecedorAtualizado = (Fornecedor)entidadeAtualizada;
-
-        Nome = fornecedorAtualizado.Nome;
-        Telefone = fornecedorAtualizado.Telefone;
-        Cnpj = fornecedorAtualizado.Cnpj;
-    }
-
     public override List<string> Validar()
     {
         List<string> erros = [];
@@ -41,5 +32,14 @@ public class Fornecedor : EntidadeBase
             erros.Add("O campo \"CNPJ\" deve conter 14 digitos.");
 
         return erros;
+    }
+
+    public override void AtualizarDados(EntidadeBase entidadeAtualizada)
+    {
+        Fornecedor fornecedorAtualizado = (Fornecedor)entidadeAtualizada;
+
+        Nome = fornecedorAtualizado.Nome;
+        Telefone = fornecedorAtualizado.Telefone;
+        Cnpj = fornecedorAtualizado.Cnpj;
     }
 }
