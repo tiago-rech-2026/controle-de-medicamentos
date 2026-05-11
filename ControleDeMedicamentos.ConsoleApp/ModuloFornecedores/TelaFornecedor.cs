@@ -36,9 +36,9 @@ public class TelaFornecedor : TelaBase<Fornecedor>, ITelaOpcoes, ITelaCrud
             "Id", "Nome", "Telefone", "CNPJ"
         );
 
-        List<Fornecedor> listas = repositorio.SelecionarTodos();
+        List<Fornecedor> registros = repositorio.SelecionarTodos();
 
-        foreach (Fornecedor f in listas)
+        foreach (Fornecedor f in registros)
         {
             Console.WriteLine(
                 "{0, -7} | {1, -30} | {2, -15} | {3, -17}",
