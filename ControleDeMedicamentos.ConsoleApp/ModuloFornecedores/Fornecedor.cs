@@ -1,20 +1,45 @@
+using System.Text.RegularExpressions;
 using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 
 public class Fornecedor : EntidadeBase
 {
-    public string Nome { get; set; }
-    public string Telefone { get; set; }
-    public string Cnpj { get; set; }
+    public string Nome { get; set; } = string.Empty;
+    public string Telefone { get; set; } = string.Empty;
+    public string Cnpj { get; set; } = string.Empty;
+
+    protected Fornecedor() { }
+
+    public Fornecedor(string nome, string telefone, string cnpj) : this()
+    {
+        Nome = nome;
+        Telefone = telefone;
+        Cnpj = cnpj;
+    }
 
     public override void AtualizarDados(EntidadeBase entidadeAtualizada)
     {
-        throw new NotImplementedException();
+        Fornecedor fornecedorAtualizado = (Fornecedor)entidadeAtualizada;
+
+        Nome = fornecedorAtualizado.Nome;
+        Telefone = fornecedorAtualizado.Telefone;
+        Cnpj = fornecedorAtualizado.Cnpj;
     }
 
     public override List<string> Validar()
     {
-        throw new NotImplementedException();
+        List<string> erros = [];
+
+        if (string.IsNullOrWhiteSpace(Nome) || Nome.Length < 2 || Nome.Length > 100)
+            erros.Add("O campo \"Nome\" deve conter entre 2 e 100 caracteres.");
+
+        if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)? \d{4,5}-\d{4}$"))
+            erros.Add("O campo \"Telefone\" deve ser estar no formato (DDD) 90000-0000.");
+
+        if (!Regex.IsMatch(Cnpj, @"^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$"))
+            erros.Add("O campo \"CNPJ\" deve conter 14 digitos.");
+
+        return erros;
     }
 }
